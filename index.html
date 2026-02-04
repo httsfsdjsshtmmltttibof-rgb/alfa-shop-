@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Alfa_shop - Luxury Watch Store</title>
+    
+    <meta property="og:title" content="Alfa_shop - Premium Watch Store">
+    <meta property="og:description" content="Bizning ijtimoiy tarmoqlarimiz va rasmiy saytimiz.">
+    <meta property="og:image" content="https://i.postimg.cc/44FXxqk2/photo-2026-02-04-05-04-22.jpg">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- PREMIUM RANGLAR PALITRASI --- */
+        :root {
+            --bg-dark: #080808; 
+            --glass-bg: rgba(20, 20, 20, 0.6); 
+            --glass-border: rgba(255, 215, 0, 0.3); 
+            
+            --gold-metallic: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            --gold-text: linear-gradient(to right, #bf953f, #fcf6ba, #b38728);
+            
+            --text-light: #ffffff;
+            --shadow-soft: 0 10px 30px -10px rgba(0,0,0,0.5);
+            --glow-gold: 0 0 20px rgba(191, 149, 63, 0.3);
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(191, 149, 63, 0.15) 0%, transparent 70%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0C13.43 0 0 13.43 0 30c0 16.57 13.43 30 30 30 16.57 0 30-13.43 30-30C60 13.43 46.57 0 30 0zm0 56C15.65 56 4 44.35 4 30S15.65 4 30 4s26 11.65 26 26-11.65 26-26 26zM30 8C17.85 8 8 17.85 8 30s9.85 22 22 22 22-9.85 22-22S42.15 8 30 8zm0 40c-9.94 0-18-8.06-18-18S20.06 12 30 12s18 8.06 18 18-8.06 18-18 18z' fill='%23bf953f' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .container {
+            width: 100%; max-width: 480px;
+            text-align: center; position: relative; z-index: 2;
+        }
+
+        /* --- SOAT SIFERBLATI KO'RINISHIDAGI PROFIL --- */
+        .profile-section {
+            /* MASOFA QISQARTIRILDI (Oldin 40px edi) */
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .watch-bezel {
+            position: relative;
+            width: 150px; height: 150px;
+            margin: 0 auto;
+            border-radius: 50%;
+            background: var(--gold-metallic);
+            padding: 5px;
+            box-shadow: var(--shadow-soft), var(--glow-gold);
+            animation: pulse-gold 4s infinite alternate;
+        }
+        
+        .watch-bezel::before {
+             content: '';
+             position: absolute; inset: 1px; border-radius: 50%;
+             background: var(--bg-dark); z-index: 1;
+        }
+
+        .profile-img {
+            width: 100%; height: 100%;
+            border-radius: 50%; object-fit: cover;
+            position: relative; z-index: 2;
+            border: 3px solid rgba(255,255,255,0.1);
+        }
+        
+        .second-hand {
+            position: absolute; top: 50%; left: 50%;
+            width: 2px; height: 65px;
+            background: red; z-index: 3;
+            transform-origin: bottom center;
+            top: 15px;
+            animation: tick-tock 60s linear infinite;
+            opacity: 0.8;
+        }
+        
+        .center-pin {
+            position: absolute; top: 50%; left: 50%;
+            width: 10px; height: 10px; background: var(--gold-metallic);
+            border-radius: 50%; transform: translate(-50%, -50%);
+            z-index: 4;
+        }
+
+        .profile-name {
+            margin-top: 25px;
+            font-size: 32px; font-weight: 800;
+            background: var(--gold-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase; letter-spacing: 2px;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
+        }
+
+        .premium-tag {
+            display: inline-block; margin-top: 10px;
+            padding: 6px 18px;
+            background: rgba(191, 149, 63, 0.2);
+            border: 1px solid rgba(191, 149, 63, 0.5);
+            color: #fcf6ba; border-radius: 30px;
+            font-size: 11px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 3px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* --- SHISHASIMON TUGMALAR --- */
+        .links-container {
+            display: flex; flex-direction: column;
+            gap: 20px; width: 100%; 
+            /* MASOFA QISQARTIRILDI (Oldin 30px edi) */
+            margin-top: 15px;
+        }
+
+        .glass-btn {
+            position: relative;
+            display: flex; align-items: center;
+            padding: 22px 30px;
+            text-decoration: none; color: var(--text-light);
+            font-size: 18px; font-weight: 500;
+            border-radius: 16px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+            box-shadow: var(--shadow-soft), inset 0 1px 1px rgba(255,255,255,0.1);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .glass-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.6s;
+            transform: skewX(-25deg);
+        }
+
+        .glass-btn i {
+            font-size: 26px; margin-right: 20px;
+            background: var(--gold-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(191, 149, 63, 0.4));
+            transition: transform 0.3s;
+        }
+
+        .glass-btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: rgba(30, 30, 30, 0.7);
+            border-color: rgba(255, 215, 0, 0.6);
+            box-shadow: 0 15px 35px -10px rgba(0,0,0,0.7), var(--glow-gold);
+        }
+        
+        .glass-btn:hover::before { left: 100%; }
+        .glass-btn:hover i { transform: scale(1.15) rotate(5deg); }
+
+        /* --- XARITA KARTASI --- */
+        .map-glass-card {
+            margin-top: 35px;
+            border-radius: 20px;
+            padding: 5px;
+            background: var(--gold-metallic);
+            box-shadow: var(--shadow-soft), var(--glow-gold);
+        }
+        
+        .map-inner {
+            border-radius: 18px; overflow: hidden;
+            height: 250px; position: relative;
+            filter: grayscale(30%) sepia(10%) contrast(110%);
+        }
+        
+        iframe { width: 100%; height: 100%; border: none; }
+        .map-overlay { position: absolute; inset: 0; z-index: 10; }
+
+        /* --- ULASHISH TUGMASI --- */
+        .share-float {
+            position: fixed; bottom: 30px; right: 30px;
+            width: 65px; height: 65px;
+            border-radius: 50%;
+            background: var(--gold-metallic);
+            border: none; color: #000; font-size: 24px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: var(--shadow-soft), var(--glow-gold);
+            z-index: 99; cursor: pointer;
+            animation: pulse-gold 3s infinite;
+        }
+
+        /* --- ANIMATSIYALAR --- */
+        @keyframes tick-tock {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(191, 149, 63, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(191, 149, 63, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(191, 149, 63, 0); }
+        }
+        
+        .glass-btn { opacity: 0; animation: slideUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+        .glass-btn:nth-child(1) { animation-delay: 0.1s; }
+        .glass-btn:nth-child(2) { animation-delay: 0.2s; }
+        .glass-btn:nth-child(3) { animation-delay: 0.3s; }
+        .glass-btn:nth-child(4) { animation-delay: 0.4s; }
+        .glass-btn:nth-child(5) { animation-delay: 0.5s; }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="profile-section">
+            <div class="watch-bezel">
+                <img src="https://i.postimg.cc/44FXxqk2/photo-2026-02-04-05-04-22.jpg" alt="Alfa_shop" class="profile-img">
+                <div class="center-pin"></div>
+                <div class="second-hand"></div>
+            </div>
+            <h1 class="profile-name">Alfa shop</h1>
+            <div class="premium-tag">Soat va iforlar olami</div>
+        </div>
+
+        <div class="links-container">
+            <a href="tel:+998918009040" class="glass-btn">
+                <i class="fas fa-phone-volume"></i> 
+                Qong'iroq qilish
+            </a>
+
+            <a href="https://t.me/Alfa_shopuzz" target="_blank" class="glass-btn">
+                <i class="fab fa-telegram"></i>
+                Telegram Kanal
+            </a>
+
+            <a href="https://t.me/Asadulloh_Rahimov" target="_blank" class="glass-btn">
+                <i class="fas fa-user-tie"></i>
+                Admin bilan bog'lanish
+            </a>
+
+            <a href="https://www.instagram.com/alfa_shopuz?utm_source=qr&igsh=MWo3ZHUxaWhib2VwMg==" target="_blank" class="glass-btn">
+                <i class="fab fa-instagram-square"></i>
+                Instagram
+            </a>
+
+            <a href="https://yandex.ru/maps?whatshere%5Bpoint%5D=70.93620302903099%2C40.537862219901335&whatshere%5Bzoom%5D=16.0&ll=70.93620302903099%2C40.53786221952825&z=16.0" target="_blank" class="glass-btn">
+                <i class="fas fa-map-marked-alt"></i>
+                Do'kon Manzili (Location)
+            </a>
+        </div>
+
+        <div class="map-glass-card">
+            <div class="map-inner">
+                <iframe src="https://yandex.ru/map-widget/v1/?ll=70.936203%2C40.537862&mode=search&ol=geo&z=16" allowfullscreen="true"></iframe>
+                <a href="https://yandex.ru/maps?whatshere%5Bpoint%5D=70.93620302903099%2C40.537862219901335&whatshere%5Bzoom%5D=16.0&ll=70.93620302903099%2C40.53786221952825&z=16.0" class="map-overlay" target="_blank"></a>
+            </div>
+        </div>
+    </div>
+
+    <button class="share-float" onclick="shareBtn()">
+        <i class="fas fa-share-alt"></i>
+    </button>
+
+    <script>
+        async function shareBtn() {
+            // Ulashiladigan ma'lumotlar
+            const shareData = {
+                title: 'Alfa_shop - Rasmiy Sayt',
+                text: 'Alfa_shop - Bizning ijtimoiy tarmoqlarimiz va rasmiy saytimiz. Marhamat kiring:',
+                url: window.location.href
+            };
+
+            // Agar telefon Share funksiyasini qo'llab quvvatlasa
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    console.log('Ulashish bekor qilindi');
+                }
+            } else {
+                // Agar kompyuterda bo'lsa yoki qo'llab quvvatlamasa, nusxalab oladi
+                try {
+                    await navigator.clipboard.writeText(shareData.text + " " + shareData.url);
+                    alert("Havola va matn nusxalandi! Do'stlaringizga yuborishingiz mumkin.");
+                } catch (err) {
+                    alert("Havola nusxalandi!");
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+```
